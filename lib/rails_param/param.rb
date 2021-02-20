@@ -1,3 +1,4 @@
+require 'pry'
 module RailsParam
   module Param
     class MockController
@@ -11,7 +12,6 @@ module RailsParam
       return unless params.include?(name) || check_param_presence?(options[:default]) || options[:required]
 
       begin
-
         # coerce value
         coerced_value = coerce(
           params[name],
@@ -73,7 +73,6 @@ module RailsParam
 
     def coerce(param, type, options = {})
       begin
-        return nil if param.nil?
         return param if (param.is_a?(type) rescue false)
         return param if (param.is_a?(ActionController::Parameters) && type == Hash rescue false)
 

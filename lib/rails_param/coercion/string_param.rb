@@ -3,7 +3,7 @@ module RailsParam
     class Coercion
       class StringParam < VirtualParam
         def coerce
-          param.nil? ? nil : String(param)
+          String(param)
         end
       end
     end

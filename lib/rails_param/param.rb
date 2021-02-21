@@ -1,4 +1,3 @@
-require 'pry'
 module RailsParam
   module Param
     class MockController
@@ -50,7 +49,6 @@ module RailsParam
 
         # set params value
         params[name] = parameter.value
-
       rescue InvalidParameterError => exception
         exception.param ||= name
         exception.options ||= options
@@ -73,6 +71,7 @@ module RailsParam
 
     def coerce(param, type, options = {})
       begin
+        return nil if param.nil? && type != Array
         return param if (param.is_a?(type) rescue false)
         return param if (param.is_a?(ActionController::Parameters) && type == Hash rescue false)
 

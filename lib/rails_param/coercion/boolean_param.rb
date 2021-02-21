@@ -6,7 +6,7 @@ module RailsParam
         TRUTHY = /^(true|t|yes|y|1)$/i.freeze
 
         def coerce
-          return false if FALSEY === param.to_s || param.nil?
+          return false if FALSEY === param.to_s
           return true if TRUTHY === param.to_s
 
           raise ArgumentError

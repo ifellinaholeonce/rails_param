@@ -5,21 +5,11 @@ module RailsParam
     TIME_TYPES = [Date, DateTime, Time].freeze
     STRING_OR_TIME_TYPES = ([String] + TIME_TYPES).freeze
 
-    def initialize(name:, value:, options: {}, type: nil, &block)
+    def initialize(name:, value:, options: {}, type: nil)
       @name = name
       @value = value
       @options = options
       @type = type
-    end
-
-    def validate_presence
-      if name.nil? && options[:required]
-        raise InvalidParameterError.new(
-          "Parameter #{name} is required",
-          param: name,
-          options: options
-        )
-      end
     end
 
     def should_set_default?

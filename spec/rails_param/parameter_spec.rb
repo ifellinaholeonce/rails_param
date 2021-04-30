@@ -15,7 +15,7 @@ describe RailsParam::Parameter do
       context "and default options present" do
         let(:options) { { default: "foobar" } }
 
-        it "returns true" do
+        it "returns true", :focus do
           expect(subject.should_set_default?).to eq true
         end
       end

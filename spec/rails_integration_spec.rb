@@ -110,8 +110,9 @@ describe FakeController, type: :controller do
       params = {
         'filter' => 'state'
       }
-      expect { get :nested_array, prepare_params(params) }.to raise_error do |error|
-        expect(error).to be_a(RailsParam::Param::InvalidParameterError)
+
+      expect { get :nested_array, **prepare_params(params) }.to raise_error do |error|
+        expect(error).to be_a(RailsParam::InvalidParameterError)
       end
     end
   end
